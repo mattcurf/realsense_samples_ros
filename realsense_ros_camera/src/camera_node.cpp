@@ -246,14 +246,15 @@ private:
 
         // We compute a ROS timestamp which is based on an initial ROS time at point of first frame,
         // and the incremental timestamp from the camera.
-        if(false == intialize_time_base_)
-        {
-          intialize_time_base_ = true;
-          ros_time_base_ = ros::Time::now();   
-          camera_time_base_ = frame.get_timestamp();
-        }
-        double elapsed_camera_ms = (/*ms*/ frame.get_timestamp() - /*ms*/ camera_time_base_) / /*ms to seconds*/ 1000;
-        ros::Time t(ros_time_base_.toSec() + elapsed_camera_ms);
+        //if(false == intialize_time_base_)
+        //{
+        //  intialize_time_base_ = true;
+        //  ros_time_base_ = ros::Time::now();   
+        //  camera_time_base_ = frame.get_timestamp();
+       // }
+        //double elapsed_camera_ms = (/*ms*/ frame.get_timestamp() - /*ms*/ camera_time_base_) / /*ms to seconds*/ 1000;
+        //ros::Time t(ros_time_base_.toSec() + elapsed_camera_ms);
+	ros::Time t = ros::Time::now();
 
         // If this stream is associated with depth and we have at least one point cloud subscriber,
         // service it here.

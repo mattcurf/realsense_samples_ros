@@ -10,6 +10,7 @@ find_package(catkin REQUIRED COMPONENTS
   cv_bridge
   image_transport
   tf
+  librealsense
 )
 
 find_package(OpenMP REQUIRED)
@@ -57,7 +58,6 @@ add_dependencies(${PROJECT_NAME} ${PROJECT_NAME}_generate_messages_cpp)
 add_dependencies(${PROJECT_NAME} ${catkin_EXPORTED_TARGETS})
 
 target_link_libraries(realsense_ros_camera
-   realsense
    ${catkin_LIBRARIES}
    ${OpenCV_LIBRARIES}
    ${CMAKE_THREAD_LIBS_INIT}
@@ -84,8 +84,8 @@ install(TARGETS ${PROJECT_NAME}
   RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
 
-install(DIRECTORY launch/
-  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/launch
+install(DIRECTORY launch meshes urdf
+  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
 )
 
 install(FILES nodelet_plugins.xml 
